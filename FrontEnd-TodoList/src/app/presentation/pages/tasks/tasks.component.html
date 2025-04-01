@@ -1,0 +1,18 @@
+<div class="tasks-page">
+  <header class="header">
+   
+    <h1>Tablero de Tareas</h1>
+    <app-button variant="secondary" (onClick)="logout()">
+      Cerrar Sesion
+    </app-button>
+  </header>
+  
+  <main>
+    <app-task-form (addTask)="addTask($event)"></app-task-form>
+    <app-task-list></app-task-list>
+  </main>
+  
+  <footer class="footer">
+    <p>&copy; 2025 Hecho por Yesid Robayo</p>
+  </footer>
+</div>

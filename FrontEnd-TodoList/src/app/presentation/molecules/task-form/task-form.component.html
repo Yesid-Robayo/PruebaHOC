@@ -1,0 +1,12 @@
+<form class="task-form" (ngSubmit)="onSubmit()">
+  <app-input
+    type="text"
+    placeholder="Titulo de la tarea"
+    [(value)]="taskTitle"
+    size="large"
+    
+  ></app-input>
+  <app-button type="submit" [disabled]="!taskTitle.trim()">
+    Agregar Tarea
+  </app-button>
+</form>

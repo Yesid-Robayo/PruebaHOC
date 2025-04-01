@@ -1,0 +1,36 @@
+.task-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start; 
+  padding: 8px;
+  margin: 4px 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  place-items: center; 
+  justify-items: center;
+  cursor: grab;
+  width: 100%;
+}
+
+.task-item.completed .task-title {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.task-title {
+  margin: 0 8px;
+  flex-grow: 1;
+  word-wrap: break-word; 
+  overflow-wrap: break-word; 
+  white-space: normal; 
+  max-width: 70%; 
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #ff4444;
+  cursor: pointer;
+  font-size: 18px;
+}

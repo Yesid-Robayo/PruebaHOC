@@ -1,0 +1,15 @@
+.input {
+    padding: 8px;
+    border: 1px solid #020202;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  .small { width: 120px; }
+  .medium { width: 200px; }
+  .large { width: 300px; }
+
+  .input:focus {
+    outline: none;
+    border-color: #1976d2;
+  }

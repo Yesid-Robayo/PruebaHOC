@@ -1,0 +1,101 @@
+
+services:
+  frontend:
+    build:
+      context: ./FrontEnd-TodoList 
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "4000:4000"
+    networks:
+      - ecommerce-network
+    depends_on:
+      - order-service
+      - user-service
+  order-db:
+    image: postgres:latest
+    container_name: order-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: order_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - order-db-data:/var/lib/postgresql/data
+    networks:
+      - ecommerce-network
+
+  user-db:
+    image: postgres:latest
+    container_name: user-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: user_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - user-db-data:/var/lib/postgresql/data
+    networks:
+      - ecommerce-network
+
+  kafka:
+    image: bitnami/kafka:latest
+    container_name: kafka
+    ports:
+    - "9092:9092"
+    - "29092:29092"
+    environment:
+      KAFKA_CFG_PROCESS_ROLES: broker,controller
+      KAFKA_CFG_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+      KAFKA_CFG_NODE_ID: 1
+    
+      KAFKA_CFG_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:29092
+      KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,EXTERNAL://kafka:29092
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_CFG_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CFG_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+    
+      ALLOW_PLAINTEXT_LISTENER: yes
+      KAFKA_CFG_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    networks:
+      - ecommerce-network
+  order-service:
+    build:
+      context: ./BackEnd-Orders/order-service
+      dockerfile: Dockerfile
+    container_name: order-service
+    depends_on:
+      - order-db
+      - kafka
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./order-service/.env
+    networks:
+      - ecommerce-network
+
+  user-service:
+    build:
+      context: ./BackEnd-Orders/user-service
+      dockerfile: Dockerfile
+    container_name: user-service
+    depends_on:
+      - user-db
+      - kafka
+    ports:
+      - "3001:3001"
+    env_file:
+      - ./user-service/.env
+    networks:
+      - ecommerce-network
+
+networks:
+  ecommerce-network:
+    driver: bridge
+
+volumes:
+  order-db-data:
+  user-db-data:
+  kafka-data:

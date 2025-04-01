@@ -1,0 +1,14 @@
+<div
+  class="task-item"
+  [class.completed]="task.completed"
+  draggable="true"
+  (dragstart)="handleDragStart($event)"
+>
+  <input
+    type="checkbox"
+    [checked]="task.completed"
+    (change)="onToggle.emit(task)"
+  />
+  <span class="task-title">{{ task.title }}</span>
+  <button class="delete-btn" (click)="onDelete.emit(task)">×</button>
+</div>

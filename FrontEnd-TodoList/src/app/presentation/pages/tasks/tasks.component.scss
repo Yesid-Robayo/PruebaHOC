@@ -1,0 +1,33 @@
+
+.tasks-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #f1f1f1;
+    padding:20px 30vh;
+    width: 100%;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+    margin-top: auto; /* Esto asegura que el pie de página se quede al final */
+  }
+  h1 {
+    margin: 0;
+    color: #333;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+  }

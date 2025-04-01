@@ -1,0 +1,19 @@
+<div class="task-board">
+  <div
+    class="task-column"
+    *ngFor="let status of statuses"
+    (dragover)="onDragOver($event)"
+    (drop)="onDrop($event, status)"
+  >
+    <h3>{{ status | titlecase }}</h3>
+    <div class="task-list">
+      <app-task-item
+        *ngFor="let task of getTasksByStatus(status)"
+        [task]="task"
+        (onToggle)="toggleTask($event)"
+        (onDelete)="deleteTask($event)"
+        (dragStart)="onDragStart($event, task)"
+      ></app-task-item>
+    </div>
+  </div>
+</div>

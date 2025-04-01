@@ -1,0 +1,14 @@
+#back
+
+BackEnd-Orders/order-service/dist
+BackEnd-Orders/order-service/node_modules
+
+BackEnd-Orders/user-service/dist
+BackEnd-Orders/user-service/node_modules
+
+
+
+#front
+FrontEnd-TodoList/dist
+FrontEnd-TodoList/node_modules
+FrontEnd-TodoList/.angular
