@@ -56,7 +56,7 @@ Para ejecutar este proyecto, necesitas tener instalados los siguientes programas
 
 4. Instala las dependencias del frontend:
    ```sh
-   cd FrontEnd && npm install
+   cd FrontEnd-TodoList && npm install
    ```
 
 ## Uso
