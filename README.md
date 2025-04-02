@@ -72,11 +72,30 @@ npm run start:dev
 ```
 
 
-## Comprobación de Pruebas
-El proyecto incluye pruebas automatizadas con Jest. Para ejecutar las pruebas, usa el siguiente comando dentro de cada servicio:
+## Ejecución de Pruebas
+Antes de ejecutar las pruebas, asegúrate de que Docker esté en ejecución con PostgreSQL y Kafka:
+```sh
+docker-compose up -d user-db order-db kafka
+```
+
+Además, actualiza el archivo `.env` para configurar todos los servicios en `localhost`:
+
+- Order-Service
+```
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/order_db
+KAFKA_BROKERS=localhost:29092
+```
+- User-Service
+```
+DATABASE_URL=postgresql://postgres:postgres@localhost:5433/user_db
+KAFKA_BROKERS=localhost:29092
+```
+
+Para ejecutar las pruebas, usa el siguiente comando dentro de cada servicio:
 ```sh
 npm run test
 ```
+
 ## Autor
 Desarrollado por Yesid Robayo.
 

@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger"
 import { IsEnum, IsNotEmpty } from "class-validator"
 
-enum OrderStatusEnum {
+export enum OrderStatusEnum {
   PENDING = "PENDING",
   PROCESSING = "PROCESSING",
   SHIPPED = "SHIPPED",

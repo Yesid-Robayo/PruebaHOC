@@ -2,12 +2,13 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { OrdersController } from './orders.controller';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { CreateOrderDto } from '../dtos/create-order.dto';
-import { OrderStatusEnum, UpdateOrderStatusDto } from '../dtos/update-order-status.dto';
 import { CreateOrderCommand } from '../../application/commands/create-order.command';
 import { UpdateOrderStatusCommand } from '../../application/commands/update-order-status.command';
 import { CancelOrderCommand } from '../../application/commands/cancel-order.command';
 import { GetOrderByIdQuery } from '../../application/queries/get-order-by-id.query';
 import { Response } from 'express';
+import { OrderStatusEnum, UpdateOrderStatusDto } from '../dtos/update-order-status.dto';
+import { OrderStatus } from 'src/orders/domain/value-objects/order-status.value-object';
 
 describe('OrdersController', () => {
   let controller: OrdersController;
