@@ -28,7 +28,14 @@ PruebaHOC-main/
 ├── docker-compose.yml  # Configuración para ejecutar los servicios con Docker
 ├── README.md  # Documentación del proyecto
 ```
+## Endpoints y Documentación API
 
+Cada servicio expone su propia documentación mediante Swagger:
+
+- **User Service** → [Documentación API](http://localhost:3001/api/docs#/)
+- **Order Service** → [Documentación API](http://localhost:3000/api/docs#/)
+- **Frontend (Angular)** → [Aplicación Web](http://localhost:4200/)
+  
 ## Requisitos Previos
 Para ejecutar este proyecto, necesitas tener instalados los siguientes programas:
 - Docker y Docker Compose
