@@ -17,7 +17,7 @@ async function connectToKafka(app: INestApplication, retries = 5, delay = 3000) 
         options: {
           client: {
             clientId: "order-service",
-            brokers: configService.get<string>("KAFKA_BROKERS", "localhost:9092").split(","),
+            brokers: configService.get<string>("KAFKA_BROKERS", "kafka:29092").split(","),
             retry: {
               initialRetryTime: 300,
               retries: 5,

@@ -3,6 +3,32 @@ import { Observable, of, throwError } from 'rxjs';
 import { AuthPort } from '../../core/ports/auth.port';
 import { User } from '../../core/models/user.model';
 
+/**
+ * Service adapter for handling authentication using local storage.
+ * Implements the `AuthPort` interface.
+ *
+ * @description
+ * This service provides methods for logging in, logging out, and retrieving
+ * the current user from the browser's local storage. It is a simple implementation
+ * for demonstration purposes and should not be used in production without proper
+ * security measures.
+ *
+ * @example
+ * // Inject the service and use its methods
+ * constructor(private authAdapter: LocalStorageAuthAdapter) {}
+ *
+ * this.authAdapter.login('user@example.com', 'password').subscribe(user => {
+ *   console.log('Logged in user:', user);
+ * });
+ *
+ * this.authAdapter.logout().subscribe(() => {
+ *   console.log('User logged out');
+ * });
+ *
+ * this.authAdapter.getCurrentUser().subscribe(user => {
+ *   console.log('Current user:', user);
+ * });
+ */
 @Injectable({
   providedIn: 'root'
 })

@@ -3,6 +3,26 @@ import { ClientKafka } from "@nestjs/microservices"
 import { Logger } from "@nestjs/common"
 import { Observable, firstValueFrom } from "rxjs"
 
+/**
+ * KafkaProducerService is a service responsible for interacting with Kafka as a producer.
+ * It handles connecting to Kafka, publishing messages, and sending requests with responses.
+ * 
+ * @class KafkaProducerService
+ * @implements {OnModuleInit}
+ * @implements {OnModuleDestroy}
+ * 
+ * @description
+ * This service provides methods to:
+ * - Publish messages to Kafka topics (fire-and-forget).
+ * - Send messages to Kafka topics and wait for responses.
+ * - Manage Kafka connection lifecycle during module initialization and destruction.
+ * 
+ * @example
+ * // Example usage:
+ * const kafkaService = new KafkaProducerService(kafkaClient);
+ * await kafkaService.publish('topic-name', { key: 'value' });
+ * const response = await kafkaService.sendAndReceive('topic-name', { key: 'value' });
+ */
 @Injectable()
 export class KafkaProducerService implements OnModuleInit, OnModuleDestroy {
   private readonly logger = new Logger(KafkaProducerService.name);

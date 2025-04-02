@@ -4,6 +4,18 @@ import { OrdersModule } from "./orders/orders.module"
 import { InfrastructureModule } from "./infrastructure/infrastructure.module"
 import { ClientsModule, Transport } from "@nestjs/microservices"
 
+/**
+ * The main application module for the order service.
+ *
+ * This module sets up the following:
+ * - **Environment Variables**: Loads environment variables globally using `ConfigModule`.
+ * - **Kafka Client**: Configures a Kafka client for inter-service communication using `ClientsModule`.
+ *   - The Kafka client is identified by `clientId: "order-service"`.
+ *   - Brokers are specified via the `KAFKA_BROKERS` environment variable or default to `kafka:9092`.
+ *   - A consumer group is defined with `groupId: "order-consumer"`.
+ *   - Auto-topic creation is enabled for the producer.
+ * - **Application Modules**: Imports `OrdersModule` and `InfrastructureModule` for the core functionality of the service.
+ */
 @Module({
   imports: [
     // Load environment variables
@@ -19,7 +31,7 @@ import { ClientsModule, Transport } from "@nestjs/microservices"
         options: {
           client: {
             clientId: "order-service",
-            brokers: [process.env.KAFKA_BROKERS || "localhost:9092"],
+            brokers: [process.env.KAFKA_BROKERS || "kafka:9092"],
           },
           consumer: {
             groupId: "order-consumer",

@@ -1,6 +1,11 @@
 import type { Order } from "../../domain/entities/order.entity"
 import type { OrderDto } from "../dtos/order.dto"
 
+/**
+ * Mapper class for converting between domain models and Data Transfer Objects (DTOs)
+ * Handles transformation between business logic and API response formats
+ * 
+ */
 export class OrderMapper {
   static toDto(order: Order): OrderDto {
     return {

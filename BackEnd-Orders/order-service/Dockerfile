@@ -40,4 +40,4 @@ COPY --from=builder /app/prisma ./prisma
 EXPOSE 3000
 
 # Wait for the database, apply migrations, and start the app
-CMD sleep 30 && npx prisma migrate deploy && node dist/main
+CMD   npx prisma migrate deploy && node dist/main

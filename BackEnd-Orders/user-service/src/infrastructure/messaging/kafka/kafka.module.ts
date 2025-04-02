@@ -12,7 +12,7 @@ import { KafkaConsumerService } from "./kafka-consumer.service"
         options: {
           client: {
             clientId: "user-producer",
-            brokers: [process.env.KAFKA_BROKERS || "localhost:9092"],
+            brokers: [process.env.KAFKA_BROKERS || "kafka:9092"],
           },
         },
       },

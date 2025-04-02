@@ -2,6 +2,24 @@ import { Inject, Injectable, type OnModuleDestroy, type OnModuleInit } from "@ne
 import type { ClientKafka } from "@nestjs/microservices"
 import { Logger } from "@nestjs/common"
 
+/**
+ * KafkaProducerService is a service responsible for managing the lifecycle
+ * of a Kafka producer and publishing messages to Kafka topics.
+ * 
+ * This service implements the `OnModuleInit` and `OnModuleDestroy` interfaces
+ * to handle initialization and cleanup tasks for the Kafka producer.
+ * 
+ * @class KafkaProducerService
+ * @implements {OnModuleInit}
+ * @implements {OnModuleDestroy}
+ * 
+ * @example
+ * // Inject the KafkaProducerService into your service or controller
+ * constructor(private readonly kafkaProducerService: KafkaProducerService) {}
+ * 
+ * // Publish a message to a Kafka topic
+ * await this.kafkaProducerService.publish('topic-name', { key: 'value' });
+ */
 @Injectable()
 export class KafkaProducerService implements OnModuleInit, OnModuleDestroy {
   private readonly logger = new Logger(KafkaProducerService.name);

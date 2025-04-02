@@ -2,6 +2,21 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Task } from '../../../core/models/task.model';
 
+/**
+ * TaskItemComponent is a standalone Angular component that represents a single task item.
+ * It allows users to toggle the task's completion status, delete the task, and supports drag-and-drop functionality.
+ * 
+ * @selector app-task-item
+ * @standalone true
+ * @imports CommonModule
+ *
+ * @property {Task} task - The task object representing the task item.
+ * @output
+ * - `onToggle`: An `EventEmitter` that emits the task object when the task is toggled.
+ * - `onDelete`: An `EventEmitter` that emits the task object when the task is deleted.
+ *  - `dragStart`: An `EventEmitter` that emits the drag event when the task is dragged.
+ *  
+ */
 @Component({
   selector: 'app-task-item',
   standalone: true,
